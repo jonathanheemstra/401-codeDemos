@@ -6,12 +6,12 @@ const eslint = require('gulp-eslint');
 const istanbul = require('gulp-istanbul');
 
 gulp.task('pre-test', function() {
-  return gulp.src(['./lib/*.js', '!node_modules/**'])
+  return gulp.src(['./lib/*.js', '!node_modules/**', '!coverage/**'])
     .pipe(istanbul())
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function() {
+gulp.task('test', function() {
   gulp.src('./test/*.js', {read:false})
     .pipe(mocha({reporter: 'nyan'}))
     .pipe(istanbul.writeReports())
@@ -19,14 +19,16 @@ gulp.task('test', ['pre-test'], function() {
 });
 
 gulp.task('lint', function() {
-  gulp.src(['**/*.js', '!node_modules/**'])
+  gulp.src(['**/*.js', '!node_modules/**', '!coverage/**'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
 
+
+
 gulp.task('dev', function() {
-  gulp.watch(['**/*.js', '!node_modules/**'], ['test', 'lint']);
+  gulp.watch(['**/*.js', '!node_modules/**'], ['pre-test', 'test', 'lint']);
 });
 
 gulp.task('default', ['dev']);
