@@ -34,8 +34,9 @@ ee.on('@dm', function(client, string) {
 });
 
 ee.on('@all', function(client, string) {
-  pool.forEach( client => {
-    client.socket.write(`${client.nickname}: ${string}`);
+  pool.forEach( c => {
+    console.log('c in the all function !!!!!', c);
+    c.socket.write(`${client.nickname}: ${string}`);
   });
 });
 
