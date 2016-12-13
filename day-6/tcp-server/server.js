@@ -33,6 +33,12 @@ ee.on('@dm', function(client, string) {
   });
 });
 
+ee.on('@all', function(client, string) {
+  pool.forEach( client => {
+    client.socket.write(`${client.nickname}: ${string}`);
+  });
+});
+
 ee.on('default', function(client, string) {
   client.socket.write('not a command\n');
 });
@@ -41,6 +47,9 @@ ee.on('default', function(client, string) {
 server.on('connection', function(socket) {
   // pulling in a client object and instantiating it
   var client = new Client(socket);
+  pool.push(client);
+
+  console.log('client pool id:', client.id);
   // will show up when you run server via 'node server.js' and 'telnet 172.16.10.192 3000' in another terminal tabl
   console.log('we have connected successfully');
 
