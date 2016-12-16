@@ -6,10 +6,11 @@ var someCallback = function(data) {
 };
 
 var useCallback = function(cb) {
+  console.log('cd ========\r\n', cb);
   cb('the data that I wanted to get');
 };
 
-// useCallback(someCallback);
+useCallback(someCallback);
 
 /*
 ==============
@@ -17,15 +18,15 @@ var useCallback = function(cb) {
 */
 
 // error first call back pattern without error
-var someCallback = function(err, data) {
-  if(err) throw err;
-  console.log('got some data:', data);
-};
-
-var useCallback = function(cb) {
-  // null is the value that is passed as the err parameter
-  cb(null, 'the data that I wanted to get');
-};
+// var someCallback = function(err, data) {
+//   if(err) throw err;
+//   console.log('got some data:', data);
+// };
+//
+// var useCallback = function(cb) {
+//   // null is the value that is passed as the err parameter
+//   cb(null, 'the data that I wanted to get');
+// };
 
 // useCallback(someCallback);
 
@@ -35,14 +36,14 @@ var useCallback = function(cb) {
 */
 
 // error first call back patter with error
-var someCallback = function(err, data) {
-  if(err) throw err;
-  console.log('got some data:', data);
-};
+// var someCallback = function(err, data) {
+//   if(err) throw err;
+//   console.log('got some data:', data);
+// };
+//
+// var useCallback = function(cb) {
+//   var sampleError = new Error('throwing a sample error');
+//   cb(sampleError, 'the data that I wanted to get');
+// };
 
-var useCallback = function(cb) {
-  var sampleError = new Error('throwing a sample error');
-  cb(sampleError, 'the data that I wanted to get');
-};
-
-useCallback(someCallback);
+// useCallback(someCallback);

@@ -3,7 +3,7 @@
 const request = require('superagent');
 const expect = require('chai').expect;
 
-require('../server.js');
+// require('../server.js');
 
 describe('Note Routes', function() {
   var note = null;
