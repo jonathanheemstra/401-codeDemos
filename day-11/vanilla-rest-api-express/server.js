@@ -1,16 +1,50 @@
 'use strict';
 
-//brings in node http module
-const http = require('http');
-const Router = require('./lib/router.js');
-const consoleLog = require('./path.js');
+const express = require('express');
+const morgan = require('morgan');
+const createError = require('http-errors');
+const jsonParser = require('body-parser').json();
+const debug = require('debug')('note:server');
+const app = express();
+const Note = require('./model/note.js');
 const PORT = process.env.PORT || 8080;
-const router = new Router();
 
-require('./route/note-route.js')(router);
+app.use(morgan('dev'));
 
-const server = http.createServer(router.route());
+app.get('/test', function(req, res) {
+  debug('I am debugging my /test route');
+  res.json({ 'msg': 'test route worked'});
+});
 
-server.listen(PORT, () => {
-  consoleLog(`Server up on ${PORT}`);
+app.post('/api/note',jsonParser, function(req, res, next) {
+  debug('POST: /api/note');
+
+  Note.createNote(req.body)
+    .then( note => res.json(note))
+    .catch( err => next(err));
+});
+
+app.get('/api/note', function(req, res, next) {
+  debug('GET: /api/note');
+
+  Note.fetchNote(req.query.id)
+    .then( note => res.json(note))
+    .catch( err => next(err));
+});
+
+app.use(function(err, req, res, next) {
+  debug('error middleware');
+
+  console.error(err.message);
+
+  if(err.status) {
+    res.status(err.status).send(err.name);
+    return;
+  }
+  err = createError(500, err.message);
+  res.status(err.status).send(err.name);
+});
+
+app.listen(PORT, () => {
+  console.log(`Server up: ${PORT}`);
 });
