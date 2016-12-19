@@ -1,8 +1,10 @@
 'use strict';
 
-var array = [0,2,3,4,5,1];
+var arrayOfNums = [0, 2, 3, 4, 5, 1];
+var arrayOfStrings = ['a', 'b', 'c', 'd', 'e'];
 
-function indexOf(x) {
+
+function indexOf(x, array) {
   for (var i = 0; i < array.length; i++) {
     if(x === array[i]) {
       return i;
@@ -11,7 +13,7 @@ function indexOf(x) {
   return -1;
 }
 
-console.log(indexOf(7));
-console.log(indexOf(2));
-console.log(indexOf(0));
-console.log(indexOf(8));
+console.log(indexOf(3, arrayOfNums));
+console.log(indexOf(7, arrayOfNums));
+console.log(indexOf('b', arrayOfStrings));
+console.log(indexOf('f', arrayOfStrings));
