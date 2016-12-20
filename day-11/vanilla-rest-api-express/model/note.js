@@ -8,7 +8,9 @@ const createError = require('http-errors');
 const Note = module.exports = function(name, content) {
   debug('note constructor');
 
+  // refactor to a throw createError(400, 'expected name');
   if(!name) throw new Error('expected name');
+  // refactor to a throw createError(400, 'expected content');
   if(!content) throw new Error('expected content');
 
   this.id = uuid.v1();
