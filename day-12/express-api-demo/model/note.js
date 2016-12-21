@@ -18,10 +18,43 @@ const Note = module.exports = function(name, content) {
 
 Note.createNote = function(_note) {
   debug('createNote method');
-  //TODO: create createNote functionality
+
+  try {
+    let note = new Note(_note.name, _note.content);
+    return storage.createItem('note', note);
+  } catch (err) {
+    return Promise.reject(createError(400, err.message));
+  }
 };
 
 Note.fetchNote = function(_id) {
   debug('fetchNote method');
-  //TODO: create fetchNote functionality
-}
+
+  return storage.fetchItem('note', _id);
+};
+
+Note.updateNote = function(_id, _note) {
+  debug('updateNote');
+
+  return storage.fetchItem('note', _id)
+    .then( note => {
+      for(var prop in note) {
+        if(prop == 'id') continue;
+        if(_note[prop]) note[prop] = _note[prop];
+      }
+      return storage.createItem('note', note);
+    })
+    .catch( err => Promise.reject(createError(404, err.message)));
+};
+
+Note.deleteNote = function(_id) {
+  debug('deleteNote');
+
+  return storage.deleteItem('note', _id);
+};
+
+Note.fetchIDs = function() {
+  debug('fetchIDs');
+
+  return storage.availableIds('note');
+};
