@@ -3,6 +3,7 @@
 const expect = require('chai').expect;
 const request = require('superagent');
 const List = require('../model/list.js');
+const console = require('../../../../path.js');
 
 require('../server.js');
 

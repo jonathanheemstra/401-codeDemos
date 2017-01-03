@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 3000;
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/note';
 
-
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 

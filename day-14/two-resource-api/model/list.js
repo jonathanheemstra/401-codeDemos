@@ -25,6 +25,8 @@ List.findByIdAndAddNote = function(id, note) {
 
       note.listID = list._id;
       this.tempList = list;
+      console.log('new Note -----', new Note(note));
+      console.log('new Note SAVE-----', new Note(note).save());
       return new Note(note).save();
     })
     .then( note => {

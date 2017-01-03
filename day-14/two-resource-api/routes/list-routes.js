@@ -5,6 +5,7 @@ const jsonParser = require('body-parser').json();
 const createError = require('http-errors');
 const debug = require('debug')('note:list-routes');
 const List = require('../model/list.js');
+const console = require('../../../../path.js');
 const listRouter = module.exports = new Router();
 
 listRouter.post('/api/list', jsonParser, function(req, res, next) {

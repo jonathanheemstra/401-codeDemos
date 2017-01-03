@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "DEBUG='note*' mocha",
-    "start": "DEBUG='note*' nodemon server.js"
+    "start": "DEBUG='*' node server.js"
   },
   "keywords": [],
   "author": "",
