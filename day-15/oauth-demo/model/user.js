@@ -26,9 +26,10 @@ userSchema.methods.generatePasswordHash = function(password) {
 
   return new Promise((resolve, reject) => {
     bcrypt.hash(password, 10, (err, hash) => {
+      debug('generatePasswordHash:bcrypt.hash', password);
       if(err) return reject(err);
       this.password = hash;
-      resolve(this);
+      return resolve(this);
     });
   });
 };
@@ -39,9 +40,10 @@ userSchema.methods.comparePasswordHash = function(password) {
 
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, this.password, (err, valid) => {
+      debug('comparePasswordHash:bcrypt.compare', password);
       if(err) return reject(err);
       if(!valid) return reject(createError(401, 'wrong password'));
-      resolve(this);
+      return resolve(this);
     });
   });
 };
@@ -51,15 +53,21 @@ userSchema.methods.generateFindHash = function() {
   debug('generateFindHash');
 
   return new Promise((resolve, reject) => {
+    debug('generateFindHash:newPromise');
     let tries = 0;
 
     _generateFindHash.call(this);
 
     function _generateFindHash() {
+      debug('generateFindHash:newPromise:_generateFindHash');
       this.findHash = crypto.randomBytes(32).toString('hex');
       this.save()
-        .then( () => resolve(this.findHash))
+        .then( () => {
+          debug('generateFindHash:newPromise:_generateFindHash:then', this.findHash);
+          return resolve(this.findHash);
+        })
         .catch( err => {
+          debug('generateFindHash:newPromise:_generateFindHash:catch', err);
           if(tries > 3) return reject(err);
           tries++;
           _generateFindHash.call(this);
@@ -73,9 +81,16 @@ userSchema.methods.generateToken = function() {
   debug('generateToken');
 
   return new Promise((resolve, reject) => {
+    debug('generateToken:newPromise');
     this.generateFindHash()
-      .then( findHash => resolve(jwt.sign( { token: findHash }, process.env.APP_SECRET)))
-      .catch( err => reject(err));
+      .then( findHash => {
+        debug('generateToken:newPromise:generateFindHash:then.findHash', findHash);
+        resolve(jwt.sign( { token: findHash }, process.env.APP_SECRET));
+      })
+      .catch( err => {
+        debug('generateToken:newPromise:generateFindHash');
+        return reject(err);
+      });
   });
 };
 

@@ -7,12 +7,17 @@ const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const User = require('../model/user.js');
 
-require('../server.js');
+// step 72
+const serverControl = require('./lib/server-control.js');
 
 // step 38
 mongoose.Promise = Promise;
 
+// step 73
+const server = require('../server.js');
+
 // step 39
+// require('../server.js'); - abstracted into ./test/lib/server-control.js
 const url = `http://localhost:${process.env.PORT}`;
 
 // step 40
@@ -24,6 +29,15 @@ const exampleUser = {
 
 // step 41
 describe('Auth Routes', function() {
+
+  // step 74
+  before( done => {
+    serverControl.serverOn(server, done);
+  });
+  after( done => {
+    serverControl.serverOff(server, done);
+  });
+
   describe('POST: /api/signup', function() {
     describe('Valid Body', function() {
       after( done => {

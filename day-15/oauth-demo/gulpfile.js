@@ -3,8 +3,6 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
-const nodemon = require('gulp-nodemon');
-
 
 gulp.task('lint', function() {
   gulp.src(['**/*.js', '**/*/*.js', '!node_modules'])
@@ -15,26 +13,11 @@ gulp.task('lint', function() {
 
 gulp.task('test', function() {
   gulp.src(['./test/*.js', '!node_modules'], { read: false })
-    .pipe(mocha( { report: 'spec' } ));
+    .pipe(mocha( { report: 'nyan' } ));
 });
 
 gulp.task('dev', function() {
-  var stream = nodemon({
-    script: 'server.js',
-    ext: 'js html',
-    ignore: ['node_modules'],
-    watch: ['*'],
-    env: { 'NODE_ENV': 'development' },
-    tasks: ['lint', 'test']
-  });
-  stream
-    .on('restart', function() {
-      console.log('Restarted Server');
-    })
-    .on('crash', function() {
-      console.error('Applicaiton has crashed');
-      stream.emit('restart', 5);
-    });
+  gulp.watch(['*/**.js', '*/**/*.js', '!node_modules/**'], ['lint', 'test']);
 });
 
 gulp.task('default', ['dev']);

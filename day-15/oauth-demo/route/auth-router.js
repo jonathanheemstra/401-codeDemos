@@ -18,13 +18,24 @@ authRouter.post('/api/signup', jsonParser, function(req, res, next) {
 
   let password = req.body.password;
   delete req.body.password;
+  debug('POST: /api/signup:password');
 
   let user = new User(req.body);
+  debug('POST: /api/signup:user');
 
   user.generatePasswordHash(password)
-    .then( user => user.save())
-    .then( user => user.generateToken())
-    .then( token => res.send(token))
+    .then( () => {
+      debug('POST: /api/signup:generatePasswordHash:then.save');
+      return user.save();
+    })
+    .then( () => {
+      debug('POST: /api/signup:generatePasswordHash:then.generateToken');
+      return user.generateToken();
+    })
+    .then( token => {
+      debug('POST: /api/signup:generatePasswordHash:then.token');
+      return res.send(token);
+    })
     .catch(next);
 });
 
@@ -33,8 +44,17 @@ authRouter.get('/api/signin', basicAuth, function(req, res, next) {
   debug('GET: /api/signin');
 
   User.findOne({ username: req.auth.username })
-    .then( user => user.comparePasswordHash(req.auth.password))
-    .then( user => user.generateToken())
-    .then( token => res.send(token))
+    .then( user => {
+      debug('GET: /api/signin:findOne:then.comparePasswordHash');
+      return user.comparePasswordHash(req.auth.password);
+    })
+    .then( user => {
+      debug('GET: /api/signin:findOne:then.generateToken');
+      return user.generateToken();
+    })
+    .then( token => {
+      debug('GET: /api/signin:findOne:then.token');
+      return res.send(token);
+    })
     .catch(next);
 });
