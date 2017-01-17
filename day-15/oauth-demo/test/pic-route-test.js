@@ -1,5 +1,8 @@
 'use strict';
 
+// step 100
+const awsMocks = require('./lib/aws-mocks.js');
+
 // step 88
 const expect = require('chai').expect;
 const request = require('superagent');
@@ -33,6 +36,15 @@ const examplePic = {
   name: 'example pic',
   desc: 'example pic description',
   image: `${__dirname}/data/tester.png`
+};
+
+// step 101
+const examplePicModel = {
+  name: 'example pic model',
+  desc: 'example pic model description',
+  imageURI: awsMocks.uploadMock.Location,
+  objectKey: awsMocks.uploadMock.Key,
+  created: new Date()
 };
 
 // step 93
@@ -98,6 +110,9 @@ describe('Pic Routes', function() {
             expect(res.body.name).to.equal(examplePic.name);
             expect(res.body.desc).to.equal(examplePic.desc);
             expect(res.body.galleryID).to.equal(this.tempGallery._id.toString());
+
+            // step 102
+            // expect(res.body.imageURI).to.equal(awsMocks.uploadMock.Location);
             done();
           });
       });

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="cowsayApp">
+  <head>
+    <title>Welcome to Cowville</title>
+  </head>
+  <body>
+    <main>
+      <section class="container" ng-controller="CowsayController">
+        <h2>{{ cowsayCtrl.title }}</h2>
+
+        <pre class="cow">
+          {{ cowsayCtrl.speak(cowsayCtrl.text) }}
+        </pre>
+
+        <input type="text" ng-model="cowsayCtrl.text">
+        
+      </section>
+    </main>
+  <script type="text/javascript" src="bundle.js"></script></body>
+</html>

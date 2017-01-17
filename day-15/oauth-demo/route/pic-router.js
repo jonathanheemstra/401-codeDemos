@@ -38,13 +38,13 @@ function s3uploadProm(params) {
 
 // step 85
 picRouter.post('/api/gallery/:galleryID/pic', bearerAuth, upload.single('image'), function(req, res, next) {
-  debug('POST: /api/gallery/:galleryID/pic');
+  debug('POST /api/gallery/:galleryID/pic');
 
-  if(!req.file) {
+  if (!req.file) {
     return next(createError(400, 'file not found'));
   }
 
-  if(!req.file.path) {
+  if (!req.file.path) {
     return next(createError(500, 'file not saved'));
   }
 
@@ -58,19 +58,19 @@ picRouter.post('/api/gallery/:galleryID/pic', bearerAuth, upload.single('image')
   };
 
   Gallery.findById(req.params.galleryID)
-    .then( () => s3uploadProm(params))
-    .then( s3data => {
-      del([`${dataDir}/*`]);
-      let picData = {
-        name: req.body.name,
-        desc: req.body.description,
-        objectKey: s3data.Key,
-        imageURI: s3data.Location,
-        userID: req.user._id,
-        galleryID: req.params.galleryID
-      };
-      return new Pic(picData).save();
-    })
-    .then( pic => res.json(pic))
-    .catch( err => next(err));
+  .then( () => s3uploadProm(params))
+  .then( s3data => {
+    del([`${dataDir}/*`]);
+    let picData = {
+      name: req.body.name,
+      desc: req.body.desc,
+      objectKey: s3data.Key,
+      imageURI: s3data.Location,
+      userID: req.user._id,
+      galleryID: req.params.galleryID
+    };
+    return new Pic(picData).save();
+  })
+  .then( pic => res.json(pic))
+  .catch( err => next(err));
 });
