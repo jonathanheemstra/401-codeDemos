@@ -19,7 +19,7 @@ const picRouter = require('./route/pic-router.js');
 const galleryRouter = require('./route/gallery-router.js');
 
 // step 6 - important that this line is run/loaded before trying to access any environment variable
-dotenv.load();
+if(process.env.NODE_ENV !== 'production') dotenv.load();
 
 // step 2
 const PORT = process.env.PORT;

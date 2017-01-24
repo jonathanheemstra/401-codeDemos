@@ -14,5 +14,7 @@ ngAdventure.controller('PlayerInfoController', ['$log', 'playerService', PlayerI
 function PlayerInfoController($log, playerService) {
   $log.debug('PlayerInfoController');
 
+  console.log('playerInfoCtrl');
+  
   this.player = playerService.player;
 }
