@@ -9,6 +9,7 @@ function Node(val) {
 
 function SinglyLinkedList(arr) {
   this.head = null;
+  this.tail = null;
 
   if (Array.isArray(arr)) {
     arr.forEach( val => {
