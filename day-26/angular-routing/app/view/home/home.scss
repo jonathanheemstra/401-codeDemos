@@ -1,0 +1,12 @@
+@import "../../scss/main";
+
+.home {
+  height: 100%;
+  width: 95%;
+  margin: 0 auto;
+
+  h1 {
+    font-size: $font-size-lg;
+    padding: 2vw 0;
+  }
+}

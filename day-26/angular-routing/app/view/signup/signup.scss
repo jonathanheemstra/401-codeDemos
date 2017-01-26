@@ -1,0 +1,47 @@
+@import "../../scss/main";
+
+.signup {
+  height: 100%;
+  width: 95%;
+  margin: 0 auto;
+
+  h1 {
+    font-size: $font-size-lg;
+    padding: 2vw 0;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  input {
+    width: 100%;
+    font-size: $font-size-lg;
+    margin: 0 0 2vw 0;
+  }
+
+  form {
+    margin: 2vw auto;
+    width: 50%;
+  }
+
+  label {
+    font-size: $font-size-lg;
+  }
+
+  button {
+    font: 2vw $brand-font;
+    color: $brand-white;
+    border: none;
+    border-radius: 3px;
+    transition: 350ms all;
+    background-color: $brand-grey-dark;
+    cursor: pointer;
+    width: 50%;
+    padding: 2vw;
+
+    &:hover {
+      background-color: $brand-grey-light;
+    }
+  }
+}

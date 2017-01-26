@@ -9,4 +9,6 @@ module.exports = ['$log', HomeController];
 // step 22
 function HomeController($log) {
   $log.debug('HomeController');
+
+  this.title = 'welcome to the homepage';
 }

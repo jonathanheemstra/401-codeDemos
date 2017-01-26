@@ -1,5 +1,90 @@
+$brand-black: #000;
+$brand-white: #fff;
+$brand-grey-dark: #444;
+$brand-grey-light: #888;
+$brand-font: 'helvetica';
+$font-size-lg: 2vw;
+$font-size-std: 1vw;
+$font-size-sm: .75vw;
+
 html, body {
   width: 100%;
-  min-height: 100%;
-  background: orange;
+  height: 100%;
+  font-family: $brand-font;
+  background: $brand-grey-light;
+}
+
+header {
+  width: 100%;
+  background: $brand-grey-dark;
+
+  nav {
+    max-width: 960px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  h1 {
+    float: left;
+    font-size: $font-size-lg;
+    line-height: 1vw;
+    padding: 2vw;
+    color: $brand-white;
+    font-weight: bold;
+  }
+
+  ul {
+    float: right;
+    font-size: $font-size-std;
+  }
+
+  li {
+    display: inline-block;
+    padding: 2vw;
+
+    &:hover {
+      background: $brand-grey-light;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $brand-white;
+  }
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  background: $brand-white;
+  height: 100%;
+}
+
+footer {
+  background: $brand-grey-dark;
+  color: $brand-white;
+  width: 100%;
+  padding: 3vw 0;
+
+  a {
+    color: $brand-white;
+    text-decoration: none;
+    padding: 0 1vw;
+
+    &:hover {
+      background: $brand-grey-light;
+    }
+  }
+
+  div {
+    max-width: 960px;
+    width: 95%;
+    margin: 0 auto;
+    font-size: $font-size-sm;
+    text-align: center;
+  }
+}
+
+.clearfix {
+  clear: both;
 }

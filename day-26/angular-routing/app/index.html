@@ -4,17 +4,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Routes App</title>
+    <title>Angular Routing App!</title>
   </head>
   <body>
     <header>
-      <h1>routes app!</h1>
+      <nav>
+        <a href="/#!/home"><h1>Angular Routing is Awesome!!!</h1></a>
+        <ul>
+          <li><a href="/#!/home">Home</a></li>
+          <li><a href="/#!/gallery">Gallery</a></li>
+          <li><a href="/#!/signup">Signup</a></li>
+        </ul>
+      </nav>
+      <div class="clearfix"></div>
     </header>
     <main>
       <ui-view></ui-view>
     </main>
     <footer>
-
+      <div>built by: <a href="https://www.linkedin.com/in/jonathanheemstra/">Jonny Heemstra</a></div>
     </footer>
   </body>
 </html>

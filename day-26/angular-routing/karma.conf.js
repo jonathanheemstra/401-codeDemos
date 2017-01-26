@@ -1,13 +1,13 @@
 // step 7
 const webpackConfig = require('./webpack.config.js');
-webpackConfig.enry = {};
+webpackConfig.entry = {};
 
 module.exports = function(config) {
   config.set({
 
     // step 8
     webpack: webpackConfig,
-    
+
     basePath: '',
     frameworks: ['jasmine'],
     files: [

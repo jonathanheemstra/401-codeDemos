@@ -1,6 +1,7 @@
 'use strict';
 
 // step 9
+require('./scss/reset.scss');
 require('./scss/main.scss');
 
 // step 10
