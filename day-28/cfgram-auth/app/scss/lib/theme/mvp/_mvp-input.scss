@@ -1,0 +1,14 @@
+.input-std {
+  max-width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 1.5vw 2vw;
+  font-size: $font-size-lg;
+  margin: 1vw 0;
+  width: 94%;
+
+  @media screen and (max-width: 750px) {
+    font-size: $font-size-lg-sv / 1.5;
+    padding: 2.5vw 2vw;
+  }
+}

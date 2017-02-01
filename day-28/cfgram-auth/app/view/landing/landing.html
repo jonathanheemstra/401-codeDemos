@@ -1,0 +1,18 @@
+<!-- step 54 -->
+<section class="landing">
+  <div class="join-container" ng-if="landingCtrl.showSignup">
+    <div class="join-inner">
+      <signup></signup>
+      <div class="clearfix"></div>
+      <p>already a member? <a href="/#/join#login" ng-click="landingCtrl.showSignup=false">sign in here.</a></p>
+    </div>
+  </div>
+
+  <div class="join-container" ng-if="!landingCtrl.showSignup">
+    <div class="join-inner">
+      <login></login>
+      <div class="clearfix"></div>
+      <p>want to signup? <a href="/#/join#signup" ng-click="landingCtrl.showSignup=true">sign up here.</a></p>
+    </div>
+  </div>
+</section>

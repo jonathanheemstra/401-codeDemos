@@ -1,0 +1,21 @@
+.create-gallery {
+  button {
+    float: right;
+    padding: 1vw 2vw;
+    background-color: $brand-grey-dark;
+    color: $brand-white;
+    margin-top: 2vw;
+    width: 30%;
+
+    &:hover {
+      background-color: $btn-hover-dark;
+      color: $brand-white;
+    }
+
+    @media screen and (max-width: 750px) {
+      width: 60%;
+      padding: 3vw 6vw;
+      font-size: $font-size-std-sv;
+    }
+  }
+}

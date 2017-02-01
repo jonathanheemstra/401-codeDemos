@@ -1,0 +1,42 @@
+html, body {
+  font-family: $brand-font;
+  font-weight: 200;
+}
+
+header {
+  background: $brand-grey-dark;
+}
+
+main {
+  background: $brand-grey-light;
+}
+
+footer {
+  background: $brand-grey-medium;
+  color: $brand-white;
+
+  a {
+    color: $brand-white;
+    text-decoration: none;
+    padding: 0 1vw;
+    font-weight: bold;
+    transition: 500ms all;
+    cursor: pointer;
+
+    &:hover {
+      color: $brand-grey-dark
+    }
+  }
+
+  div {
+    max-width: 960px;
+    width: 95%;
+    margin: 0 auto;
+    font-size: $font-size-lg;
+    text-align: center;
+
+    @media screen and (max-width: 750px) {
+      font-size: $font-size-lg-sv;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.navbar {
+  max-width: 960px;
+  margin: 0 auto;
+
+  h2 {
+    display: block;
+    float: left;
+    font-size: $font-size-lg;
+    padding: 2vw 0;
+    color: $brand-white;
+    font-weight: 200;
+
+    @media screen and (max-width: 750px) {
+      font-size: $font-size-lg-sv;
+      padding: 3vw;
+    }
+  }
+
+  ul {
+    float: right;
+    font-size: $font-size-std;
+  }
+
+  li {
+    display: inline-block;
+    padding: 2vw;
+
+    &:hover {
+      background: $brand-grey-light;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $brand-white;
+  }
+
+  img {
+    float: left;
+    width: 4vw;
+    margin: 1vw;
+
+    @media screen and (max-width: 750px) {
+      display: none;
+    }
+  }
+
+  button {
+    margin: 1.75vw;
+    float: right;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    background-color: $brand-grey-light;
+    color: $brand-black;
+
+    &:hover {
+      background-color: $btn-hover-light;
+      color: $brand-white;
+    }
+
+    @media screen and (max-width: 750px) {
+      width: 40%;
+      padding: 3vw 6vw;
+      font-size: $font-size-std-sv;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.landing {
+  margin: 0 auto;
+  width: 90%;
+
+  h2 {
+    font-size: $font-size-lg;
+    padding: 1vw 0 1.5vw 0;
+
+    @media screen and (max-width: 750px) {
+      font-size: $font-size-lg-sv;
+    }
+  }
+
+  p {
+    float: right;
+    padding: 2vw 0;
+  }
+
+  a {
+    color: $brand-grey-dark;
+    text-decoration: none;
+    font-weight: bold;
+
+    &:hover {
+      color: $brand-grey-light;
+    }
+  }
+}

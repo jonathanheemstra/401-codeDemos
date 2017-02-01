@@ -1,0 +1,35 @@
+.btn {
+  border: none;
+  border-radius: 5px;
+  transition: 350ms all;
+  cursor: pointer;
+  padding: .5vw;
+  font-family: $brand-font;
+}
+
+.btn-lg {
+  @extend .btn;
+  font-size: 3vw;
+
+  @media screen and (max-width: 750px) {
+    font-size: $font-size-std-sv;
+  }
+}
+
+.btn-std {
+  @extend .btn;
+  font-size: 2vw;
+
+  @media screen and (max-width: 750px) {
+    font-size: $font-size-std-sv;
+  }
+}
+
+.btn-sm {
+  @extend .btn;
+  font-size: 1.5vw;
+
+  @media screen and (max-width: 750px) {
+    font-size: $font-size-std-sv;
+  }
+}

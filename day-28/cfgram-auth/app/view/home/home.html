@@ -1,0 +1,32 @@
+<!-- step 51 -->
+<section class="home">
+  <h2>{{ homeCtrl.title }}</h2>
+
+  <!-- step 66 -->
+  <create-gallery></create-gallery>
+  <div class="clearfix"></div>
+  <!-- step 94 -->
+  <div class="gallery-item-container">
+
+    <ul>
+      <!-- step 79 -->
+      <gallery-item ng-repeat="item in homeCtrl.galleries" gallery="item" delete-done="homeCtrl.galleryDeleteDone(galleryData)">
+
+
+      </gallery-item>
+
+      <!--
+      removed as part of step 79 because the data is now coming from gallery item
+      <li ng-repeat="gallery in homeCtrl.galleries">
+        <span>name: {{ gallery.name }}</span>
+        <span>description: {{ gallery.desc }}</span>
+        <span>id: {{ gallery._id }}</span>
+      </li>
+      -->
+
+    </ul>
+  </div>
+
+  <!-- step 95 -->
+  <thumbnail-container ng-if="homeCtrl.currentGallery" gallery="homeCtrl.currentGallery"></thumbnail-container>
+</section>
