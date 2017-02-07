@@ -31,8 +31,8 @@ module.exports = function(config) {
       'app/entry.js': ['webpack']
     },
 
-    reporters: ['progress'],
-    
+    reporters: ['mocha'],
+
     port: 9876,
 
     colors: true,
