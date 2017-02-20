@@ -1,0 +1,7 @@
+<!-- step 103 -->
+<nav>
+  <h2>{{ socialIconsCtrl.title | uppercase }}</h2>
+  <ul>
+    <li class="social-icon {{ icon }}" ng-repeat="icon in socialIconsCtrl.icons | limitTo: 2">{{ icon }}</li>
+  </ul>
+</nav>
